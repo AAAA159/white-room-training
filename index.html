@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE WHITE ROOM | Training Facility</title>
+    <meta name="description" content="النظام التشغيلي لقطاع المبتدئين - منشأة الغرفة البيضاء.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;600;800&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg: #020202;
+            --card-bg: #080c12;
+            --accent: #0080ff;
+            --danger: #ff3333;
+            --text: #b0bcc9;
+            --border: 1px solid #101a28;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg);
+            background-image:
+                linear-gradient(rgba(0, 128, 255, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 128, 255, 0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+            color: var(--text);
+            font-family: 'Cairo', sans-serif;
+            min-height: 100vh;
+            padding: 4rem 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* تأثير المسح */
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0,0,0,0.1) 0px,
+                rgba(0,0,0,0.1) 2px,
+                transparent 2px,
+                transparent 4px
+            );
+            pointer-events: none;
+            z-index: 999;
+            opacity: 0.4;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            z-index: 2;
+        }
+
+        /* الهيدر */
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2rem, 8vw, 3.8rem);
+            color: #ffffff;
+            letter-spacing: 10px;
+            text-shadow: 0 0 30px rgba(0, 128, 255, 0.2);
+            animation: pulseGlow 4s ease-in-out infinite alternate;
+            word-break: break-word;
+        }
+
+        @keyframes pulseGlow {
+            from { text-shadow: 0 0 20px rgba(0,128,255,0.1); }
+            to { text-shadow: 0 0 45px rgba(0,128,255,0.4); }
+        }
+
+        .subtitle {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 5px;
+            color: var(--accent);
+            opacity: 0.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            color: var(--accent);
+            background: rgba(0,128,255,0.05);
+            border: 1px solid rgba(0,128,255,0.25);
+            padding: 0.5rem 1.5rem;
+            border-radius: 2px;
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 12px var(--accent);
+            animation: dotPulse 2s infinite;
+        }
+
+        @keyframes dotPulse {
+            0%, 100% { transform: scale(0.8); opacity: 0.7; }
+            50% { transform: scale(1.2); opacity: 1; }
+        }
+
+        /* مستوى التهديد */
+        .threat-level {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.7rem;
+            color: #5a6b7a;
+        }
+
+        .threat-label {
+            opacity: 0.7;
+        }
+
+        .threat-value {
+            font-weight: 700;
+            min-width: 100px;
+            text-align: center;
+            transition: color 0.4s, text-shadow 0.4s;
+        }
+
+        .threat-bar {
+            width: 60px;
+            height: 3px;
+            background: #101a28;
+            position: relative;
+        }
+
+        .threat-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 20%;
+            background: #00cc66;
+            box-shadow: 0 0 8px #00cc66;
+            transition: width 0.6s, background 0.6s, box-shadow 0.6s;
+        }
+
+        /* الشبكة */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: var(--border);
+            padding: 2.2rem 1.8rem;
+            position: relative;
+            transition: all 0.35s ease;
+            opacity: 0.85;
+            backdrop-filter: blur(2px);
+        }
+
+        .card.intro {
+            grid-column: 1 / -1;
+            background: linear-gradient(145deg, #070c14 0%, #0b1420 100%);
+            border-color: rgba(0,128,255,0.2);
+        }
+
+        /* تأثير الشبكة عند التحويم */
+        .grid:hover .card:not(:hover) {
+            opacity: 0.5;
+            filter: blur(1px);
+            transform: scale(0.98);
+        }
+
+        .card:hover {
+            opacity: 1 !important;
+            filter: blur(0) !important;
+            transform: translateY(-6px) scale(1.02);
+            border-color: var(--accent);
+            background: #0c1220;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.7), 0 0 30px rgba(0,128,255,0.1);
+            z-index: 5;
+            animation: cardGlitch 0.35s ease;
+        }
+
+        @keyframes cardGlitch {
+            0% { transform: translateY(-6px) scale(1.02); }
+            20% { transform: translateY(-6px) scale(1.02) translateX(-2px); }
+            40% { transform: translateY(-6px) scale(1.02) translateX(2px); }
+            60% { transform: translateY(-6px) scale(1.02) translateX(-1px); }
+            80% { transform: translateY(-6px) scale(1.02) translateX(1px); }
+            100% { transform: translateY(-6px) scale(1.02); }
+        }
+
+        /* زوايا */
+        .card::before,
+        .card::after {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            transition: 0.3s;
+            border-color: transparent;
+            border-style: solid;
+        }
+
+        .card::before {
+            top: -1px;
+            right: -1px;
+            border-width: 2px 2px 0 0;
+        }
+
+        .card::after {
+            bottom: -1px;
+            left: -1px;
+            border-width: 0 0 2px 2px;
+        }
+
+        .card:hover::before,
+        .card:hover::after {
+            border-color: var(--accent);
+            width: 22px;
+            height: 22px;
+        }
+
+        .protocol-id {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.6rem;
+            color: #1b2535;
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+
+        .card:hover .protocol-id {
+            color: var(--accent);
+            opacity: 0.9;
+        }
+
+        .card h3 {
+            font-family: 'Cairo', sans-serif;
+            font-weight: 800;
+            color: #c0cfe0;
+            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: 0.3s;
+        }
+
+        .card h3::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #1e2a3a;
+            border-radius: 1px;
+            transition: 0.3s;
+        }
+
+        .card:hover h3 {
+            color: #ffffff;
+        }
+
+        .card:hover h3::before {
+            background: var(--accent);
+            box-shadow: 0 0 10px var(--accent);
+        }
+
+        .card p {
+            line-height: 1.9;
+            font-size: 0.9rem;
+            color: #8f9db0;
+            text-align: justify;
+            transition: 0.3s;
+        }
+
+        .card:hover p {
+            color: #d0dae8;
+        }
+
+        .card b {
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .warning {
+            color: var(--danger);
+            font-weight: 800;
+            text-shadow: 0 0 8px rgba(255,51,51,0.2);
+        }
+
+        .warning-blink {
+            animation: betrayBlink 1.2s infinite alternate;
+            display: inline-block;
+        }
+
+        @keyframes betrayBlink {
+            0% { text-shadow: 0 0 5px rgba(255,51,51,0.4); color: #ff4444; }
+            100% { text-shadow: 0 0 18px rgba(255,51,51,0.9); color: #ff7777; }
+        }
+
+        /* الفوتر */
+        footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid #0e1725;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.65rem;
+            letter-spacing: 4px;
+            color: #1a2535;
+        }
+
+        /* همسة */
+        .whisper {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 2000;
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.7rem;
+            color: rgba(0,128,255,0.2);
+            max-width: 200px;
+            pointer-events: none;
+            animation: fadeWhisper 10s infinite alternate;
+        }
+
+        @keyframes fadeWhisper {
+            from { opacity: 0.1; transform: translateY(8px); }
+            to { opacity: 0.5; transform: translateY(0); }
+        }
+
+        /* موبايل */
+        @media (max-width: 700px) {
+            body {
+                padding: 2rem 1rem;
+            }
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            .card {
+                padding: 1.8rem 1.2rem;
+                opacity: 0.9;
+            }
+            .card:hover {
+                transform: none;
+                animation: none;
+            }
+            .grid:hover .card:not(:hover) {
+                opacity: 0.7;
+                filter: blur(0);
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>WHITE ROOM</h1>
+            <div class="subtitle">TRAINING FACILITY · ZONE-B</div>
+            <div class="status-badge">
+                <span class="status-dot"></span> PHASE: TRAINING & EVALUATION
+            </div>
+        </header>
+
+        <div class="threat-level">
+            <span class="threat-label">مستوى التهديد:</span>
+            <span class="threat-value" id="threatLevel">منخفض جداً</span>
+            <div class="threat-bar"><div class="threat-fill" id="threatFill"></div></div>
+        </div>
+
+        <section class="grid">
+            <!-- بطاقة التعريف -->
+            <div class="card intro">
+                <span class="protocol-id">INF_00</span>
+                <h3>ملف التعريف: منشأة الغرفة البيضاء</h3>
+                <p><b>الخلفية التاريخية:</b> هذا النظام مستوحى من المنشأة التجريبية الأكثر صرامة في أنمي <b>Classroom of the Elite</b>، حيث يتم عزل الأفراد عن العالم الخارجي لإلغاء المشاعر والمشتتات، والتركيز على هدف واحد: <b>صناعة وتوليد العباقرة والنخبة المطلقة عبر الكفاءة والمنطق البارد.</b><br><br>
+                <b>ماذا نفعل هنا؟</b> أنت هنا لست لاعباً هاوياً، أنت هنا مشروع عبقري تكتيكي. في هذه المنشأة، نستخدم <b>الشطرنج كأداة لاختبار ورفع أقصى حدود قدراتك العقلية</b> (التخطيط الاستراتيجي، التحكم في الانفعالات، والتحليل الخوارزمي للمواقف).<br><br>
+                <b>المطلوب منك:</b> نسيان العشوائية. ستخوض مواجهات رسمية، يتم تتبعها وتحليلها رقمياً ومراقبة منحنى مستواك يومياً. إما أن تتطور لتصعد إلى رتبة النخبة وتثبت جدارتك، أو يسحقك النظام وتتم تصفيتك خارج المنشأة. <b>البقاء هنا لمن يملك الأرقام والنتائج فقط.</b></p>
+            </div>
+
+            <div class="card">
+                <span class="protocol-id">TRN_01</span>
+                <h3>بوابة العبور للنخبة</h3>
+                <p>الترقي ليس صدفة: للانتقال إلى الغرفة البيضاء الرئيسية (النخبة)، يتعين عليك احتلال أحد المراكز الثلاثة الأولى في قائمة الشرف لـ <b>4 أسابيع متتالية</b>. التراجع ليوم واحد ينسف التقدم بالكامل.</p>
+            </div>
+
+            <div class="card">
+                <span class="protocol-id">TRN_02</span>
+                <h3>بروتوكول الاستحقاق أسبوعياً</h3>
+                <p>الحق في البقاء مشروط بالعمل. يلتزم كل متدرب بخوض <b>5 مواجهات رسمية</b> كحد أدنى كل أسبوع عبر المنصة المعتمدة. التقاعس عن هذا الرقم يفعل بروتوكول <span class="warning">الإقصاء التلقائي</span>.</p>
+            </div>
+
+            <div class="card">
+                <span class="protocol-id">TRN_03</span>
+                <h3>منحنى نمو الـ Elo</h3>
+                <p>الوقوف في مكانك يعني نهايتك الفنية. يراقب النظام منحنى تصنيفك الفني؛ ثبات مستوى تقييمك أو هبوطه المستمر على مدار <b>45 يوماً</b> يعرضك فوراً لإعادة تقييم الأهلية للبقاء في المنشأة. <br><span class="warning">تذكّر:</span> ثبات مستواك لا يعني أنك سيء، بل يعني أن الآخرين يتقدمون بسرعة أكبر. لا مكان للمتعثرين.</p>
+            </div>
+
+            <div class="card">
+                <span class="protocol-id">TRN_04</span>
+                <h3>الرصد والنزاهة المطلقة</h3>
+                <p>استخدام الخوارزميات أو الأدوات المساعدة أو محركات الشطرنج (Engines) جريمة في حق المنشأة. أنظمة الفحص كفيلة بكشف أدنى تلاعب، والعقوبة هي <span class="warning">الشطب والمنع النهائي</span> من السجلات.</p>
+            </div>
+
+            <div class="card">
+                <span class="protocol-id">TRN_05</span>
+                <h3>الميدان والموقع الرسمي</h3>
+                <p>منصة <b>Chess.com</b> هي الساحة الرقمية الوحيدة المعترف بها. أي مباريات أو اختبارات تُجرى خارج السيرفر أو على منصات أخرى لا وزن لها ولا تُقيد في تقارير الأداء الفني الخاصة بك.</p>
+            </div>
+
+            <div class="card">
+                <span class="protocol-id">TRN_06</span>
+                <h3>الانضباط اللفظي والعقلي</h3>
+                <p>بيئة التدريب مصممة لبناء العقل؛ المشاعر مرادف للفشل. أي انفجار عاطفي، احتفال مفرط، أو حزن علني يُسجَّل في ملفك كمؤشر على عدم الانضباط. <b>العقل البارد وحده من ينجو.</b></p>
+            </div>
+
+            <div class="card">
+                <span class="protocol-id">TRN_07</span>
+                <h3>حدود مواجهة الكبار</h3>
+                <p>يُسمح للمتدرب المتميز بتقديم طلب تحدي للمركز الأخير في النخبة بمعدل <b>مرتين فقط شهرياً</b>. إذا خسرت التحدي، تُحظر من حق طلب المواجهات لمدة أسبوعين؛ احتراماً لوقت رتبة النخبة.</p>
+            </div>
+
+            <div class="card">
+                <span class="protocol-id">TRN_08</span>
+                <h3>بروتوكول طلب المساعدة الفنية</h3>
+                <p>يحق للمتدربين الطامحين في التطور طلب التبني والتدريب من قِبل الثلاثة الأوائل في النخبة. <b>الشرط الصارم:</b> إمداد المشرف بروابط مبارياتك على Chess.com بشكل فوري لتوثيق التحليل الرقمي.</p>
+            </div>
+
+            <div class="card">
+                <span class="protocol-id">TRN_09</span>
+                <h3>سرية الأبحاث التكتيكية</h3>
+                <p>الافتتاحيات، دراسات نهاية الدور، وتقارير الأخطاء المصممة هنا هي بيانات مغلقة. تسريب أي لقطة شاشة (Screenshot) خارج نطاق المنشأة يعرض المتدرب لعقوبة <span class="warning warning-blink">الطرد الفوري بتهمة الخيانة</span>.</p>
+            </div>
+
+            <div class="card">
+                <span class="protocol-id">TRN_10</span>
+                <h3>بروتوكول التجميع التكتيكي</h3>
+                <p>يُسمح للمتدربين بتشكيل خلايا تدريبية مصغرة (بحد أقصى 3 أفراد). تُقدّم هذه الخلايا تقارير جماعية أسبوعية. في حالة فشل أحد الأعضاء أو تراجع أدائه، تُخصم نقاط من المجموعة بالكامل. <b>لا مكان للضعف الجماعي.</b></p>
+            </div>
+        </section>
+
+        <footer>
+            THE WHITE ROOM // TRAINING SECTION // ALL RULES ARE ABSOLUTE // CODE: WR-TR02
+        </footer>
+    </div>
+
+    <div class="whisper" id="dynamicWhisper">"لا تولد عبقرياً... بل اصنع من نفسك واحداً."</div>
+
+    <script>
+        // مستوى التهديد
+        const threatLevelEl = document.getElementById('threatLevel');
+        const threatFillEl = document.getElementById('threatFill');
+        const states = [
+            { text: 'منخفض جداً', color: '#00cc66', width: '20%', shadow: '0 0 10px #00cc66' },
+            { text: 'منخفض', color: '#66cc00', width: '35%', shadow: '0 0 12px #66cc00' },
+            { text: 'متوسط', color: '#ffcc00', width: '55%', shadow: '0 0 15px #ffcc00' },
+            { text: 'مرتفع', color: '#ff6600', width: '75%', shadow: '0 0 18px #ff6600' },
+            { text: 'حرج', color: '#ff3333', width: '95%', shadow: '0 0 25px #ff3333' }
+        ];
+        let idx = 0;
+        function updateThreat() {
+            const s = states[idx];
+            threatLevelEl.textContent = s.text;
+            threatLevelEl.style.color = s.color;
+            threatLevelEl.style.textShadow = `0 0 12px ${s.color}`;
+            threatFillEl.style.width = s.width;
+            threatFillEl.style.background = s.color;
+            threatFillEl.style.boxShadow = s.shadow;
+            idx = (idx + 1) % states.length;
+        }
+        updateThreat();
+        setInterval(updateThreat, 8000);
+
+        // همسات
+        const whispers = [
+            "القدرة بدون جهد لا تعني شيئاً.",
+            "كل خطوة تخطوها... نرصدها.",
+            "النخبة لا تشكو. النخبة تتكيف.",
+            "هل تشعر بالدفء؟ إنه ضغط التوقعات.",
+            "تذكر: الغرفة البيضاء لا ترحم.",
+            "خطأ واحد وأنت في الخارج.",
+            "الأرقام لا تكذب. والأعذار لا تنفع.",
+            "تقدم أو اختفي."
+        ];
+        let wIdx = 0;
+        const whisperEl = document.getElementById('dynamicWhisper');
+        setInterval(() => {
+            wIdx = (wIdx + 1) % whispers.length;
+            whisperEl.style.opacity = '0';
+            setTimeout(() => {
+                whisperEl.textContent = whispers[wIdx];
+                whisperEl.style.opacity = '1';
+            }, 350);
+        }, 6000);
+    </script>
+</body>
+</html>
