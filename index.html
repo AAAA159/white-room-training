@@ -21,11 +21,7 @@
             --danger: #ff3333;
         }
 
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-        }
+        *, *::before, *::after { box-sizing: border-box; }
 
         body {
             background-color: var(--bg-pure);
@@ -37,291 +33,139 @@
             font-family: 'Cairo', sans-serif;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            margin: 0;
-            padding: 0;
+            margin: 0; padding: 0;
         }
 
         /* ========== TICKER ========== */
         .ticker-wrap {
-            background: #000;
-            border-bottom: 1px solid var(--border-color);
-            padding: 10px 0;
-            overflow: hidden;
-            white-space: nowrap;
+            background: #000; border-bottom: 1px solid var(--border-color);
+            padding: 10px 0; overflow: hidden; white-space: nowrap;
         }
         .ticker-content {
-            display: inline-block;
-            animation: ticker-slide 35s linear infinite;
-            will-change: transform;
+            display: inline-block; animation: ticker-slide 35s linear infinite; will-change: transform;
         }
         @keyframes ticker-slide {
-            0% {
-                transform: translate3d(0, 0, 0);
-            }
-            100% {
-                transform: translate3d(50%, 0, 0);
-            }
+            0% { transform: translate3d(0,0,0); }
+            100% { transform: translate3d(50%,0,0); }
         }
 
-        /* ========== HEADER & NAV ========== */
+        /* ========== HEADER ========== */
         .sticky-header {
-            position: sticky;
-            top: 0;
-            z-index: 50;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(20px);
+            position: sticky; top: 0; z-index: 50;
+            background: rgba(0,0,0,0.6); backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
         .logo-diamond {
-            width: 32px;
-            height: 32px;
-            border: 1px solid var(--accent);
-            transform: rotate(45deg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: 32px; height: 32px; border: 1px solid var(--accent);
+            transform: rotate(45deg); display: flex;
+            align-items: center; justify-content: center;
             transition: background-color 0.5s ease;
         }
-        .logo-link:hover .logo-diamond {
-            background-color: var(--accent);
-        }
+        .logo-link:hover .logo-diamond { background-color: var(--accent); }
         .logo-diamond span {
-            transform: rotate(-45deg);
-            font-weight: 900;
-            color: #fff;
-            font-size: 12px;
+            transform: rotate(-45deg); font-weight: 900;
+            color: #fff; font-size: 12px;
         }
 
         /* ========== THREAT LEVEL ========== */
         .threat-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin-bottom: 2.5rem;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.7rem;
-            color: #4a5b72;
+            display: flex; justify-content: center; align-items: center;
+            gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem;
+            font-family: 'Orbitron', sans-serif; font-size: 0.7rem; color: #4a5b72;
         }
         .threat-value {
-            font-weight: 700;
-            min-width: 100px;
-            text-align: center;
+            font-weight: 700; min-width: 100px; text-align: center;
             transition: color 0.4s, text-shadow 0.4s;
         }
-        .threat-bar {
-            width: 60px;
-            height: 3px;
-            background: #0b1528;
-            position: relative;
-        }
+        .threat-bar { width: 60px; height: 3px; background: #0b1528; position: relative; }
         .threat-fill {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 20%;
-            background: #00cc66;
-            box-shadow: 0 0 8px #00cc66;
+            position: absolute; top: 0; left: 0; height: 100%;
+            width: 20%; background: #00cc66; box-shadow: 0 0 8px #00cc66;
             transition: width 0.6s, background 0.6s, box-shadow 0.6s;
         }
 
         /* ========== TYPOGRAPHY ========== */
         .heading-huge {
-            font-size: clamp(2.5rem, 8vw, 4.5rem);
-            font-weight: 900;
-            line-height: 0.9;
-            letter-spacing: -0.03em;
-            text-transform: uppercase;
+            font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 900;
+            line-height: 0.9; letter-spacing: -0.03em; text-transform: uppercase;
         }
         .mono-label {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 11px;
-            letter-spacing: 3px;
-            color: var(--accent);
-            text-transform: uppercase;
+            font-family: 'Orbitron', sans-serif; font-size: 11px;
+            letter-spacing: 3px; color: var(--accent); text-transform: uppercase;
         }
-        .stroke-text {
-            -webkit-text-stroke: 1.5px var(--accent);
-        }
+        .stroke-text { -webkit-text-stroke: 1.5px var(--accent); }
 
         /* ========== BUTTONS ========== */
         .btn-elite {
-            background: #ffffff;
-            color: #000000;
-            padding: 14px 32px;
-            border-radius: 100px;
-            font-weight: 600;
-            font-size: 14px;
+            background: #ffffff; color: #000000; padding: 14px 32px;
+            border-radius: 100px; font-weight: 600; font-size: 14px;
             transition: transform 0.4s ease, box-shadow 0.4s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            cursor: pointer;
-            border: none;
-            outline: none;
-            user-select: none;
-            will-change: transform;
+            display: inline-flex; align-items: center; gap: 8px;
+            cursor: pointer; border: none; outline: none; user-select: none;
         }
-        .btn-elite:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
-        }
-        .btn-elite:active {
-            transform: scale(0.98);
-        }
+        .btn-elite:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(255,255,255,0.2); }
+        .btn-elite:active { transform: scale(0.98); }
         .btn-outline {
-            padding: 12px 24px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 100px;
-            font-weight: 700;
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #fff;
-            background: transparent;
-            cursor: pointer;
-            transition: background 0.3s ease;
-            user-select: none;
+            padding: 12px 24px; border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 100px; font-weight: 700; font-size: 13px;
+            text-transform: uppercase; letter-spacing: 2px; color: #fff;
+            background: transparent; cursor: pointer; transition: background 0.3s ease;
         }
-        .btn-outline:hover {
-            background: rgba(255, 255, 255, 0.05);
-        }
+        .btn-outline:hover { background: rgba(255,255,255,0.05); }
 
-        /* ========== CARDS GRID ========== */
+        /* ========== CARDS ========== */
         .glass-node-card {
-            background: var(--panel-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 24px;
-            padding: 24px;
-            cursor: pointer;
-            transition: border-color 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-                background 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-                box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            will-change: transform;
-            user-select: none;
+            background: var(--panel-bg); border: 1px solid var(--border-color);
+            border-radius: 24px; padding: 24px; cursor: pointer;
+            transition: border-color 0.5s, background 0.5s, transform 0.5s, box-shadow 0.5s;
+            will-change: transform; user-select: none;
         }
         .glass-node-card:hover {
-            border-color: var(--accent);
-            background: rgba(0, 128, 255, 0.02);
-            transform: translateY(-6px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-        }
-        .glass-node-card:active {
-            transform: translateY(-3px);
+            border-color: var(--accent); background: rgba(0,128,255,0.02);
+            transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,0.5);
         }
 
         /* ========== DYNAMIC SECTION ========== */
         .full-section-viewport {
-            display: none;
-            scroll-margin-top: 100px;
-            background: #05070a;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 32px;
-            padding: 32px;
-            margin-top: 32px;
-            animation: fadeSlideIn 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+            display: none; scroll-margin-top: 100px;
+            background: #05070a; border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 32px; padding: 32px; margin-top: 32px;
+            animation: fadeSlideIn 0.45s cubic-bezier(0.16,1,0.3,1);
         }
-        @media (min-width: 768px) {
-            .full-section-viewport {
-                padding: 48px;
-            }
-        }
-        .full-section-viewport.active {
-            display: block;
-        }
+        @media (min-width: 768px) { .full-section-viewport { padding: 48px; } }
+        .full-section-viewport.active { display: block; }
         @keyframes fadeSlideIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* ========== FORMS ========== */
         .input-field {
-            width: 100%;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 12px 16px;
-            color: #fff;
-            outline: none;
-            transition: border-color 0.3s ease;
-            font-family: 'Cairo', sans-serif;
+            width: 100%; background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;
+            padding: 12px 16px; color: #fff; outline: none;
+            transition: border-color 0.3s ease; font-family: 'Cairo', sans-serif;
         }
-        .input-field:focus {
-            border-color: var(--accent);
-        }
-        .input-field::placeholder {
-            color: #4a5568;
-        }
+        .input-field:focus { border-color: var(--accent); }
+        .input-field::placeholder { color: #4a5568; }
 
         /* ========== WHISPER ========== */
         .whisper {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            z-index: 2000;
-            font-family: 'Cairo', sans-serif;
-            font-size: 0.7rem;
-            color: rgba(0, 128, 255, 0.2);
-            max-width: 200px;
-            pointer-events: none;
-            transition: opacity 0.8s ease;
+            position: fixed; bottom: 20px; left: 20px; z-index: 2000;
+            font-family: 'Cairo', sans-serif; font-size: 0.7rem;
+            color: rgba(0,128,255,0.2); max-width: 200px;
+            pointer-events: none; transition: opacity 0.8s ease;
         }
 
         /* ========== SCROLLBAR ========== */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #000;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #14223b;
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--accent);
-        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: #14223b; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
-        /* ========== UTILITY ========== */
-        .justify-text {
-            text-align: justify;
-        }
-        .section-divider {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            padding-bottom: 24px;
-            margin-bottom: 48px;
-        }
-        .hero-border {
-            border-right: 2px solid var(--accent);
-            padding-right: 24px;
-        }
-
-        /* ========== REDUCED MOTION ========== */
-        @media (prefers-reduced-motion: reduce) {
-            .ticker-content {
-                animation: none;
-            }
-            .glass-node-card,
-            .btn-elite,
-            .full-section-viewport {
-                animation: none;
-                transition: none;
-            }
-            .whisper {
-                transition: none;
-            }
-        }
+        .justify-text { text-align: justify; }
+        .hero-border { border-right: 2px solid var(--accent); padding-right: 24px; }
     </style>
 </head>
 <body>
@@ -329,7 +173,7 @@
     <!-- TICKER -->
     <div class="ticker-wrap" aria-hidden="true">
         <div class="ticker-content mono-label">
-            [ TRAINING_FACILITY: ACTIVE ] • [ PHASE: EVALUATION ] • [ MIN_WEEKLY_MATCHES: 5 ] • [ PROMOTION_GATE: TOP_3_FOR_4_WEEKS ] • [ NO_EMOTIONS ]
+            [ TRAINING_FACILITY: ACTIVE ] • [ MIN_MATCHES: 5 ] • [ PROMOTION: TOP_3_FOR_4_WEEKS ] • [ NO_EMOTIONS ]
         </div>
     </div>
 
@@ -337,23 +181,19 @@
     <header class="sticky-header">
         <div class="container mx-auto px-6 md:px-12 py-4 flex justify-between items-center">
             <a href="#" class="flex items-center gap-3 group logo-link" id="logoHome" aria-label="العودة للصفحة الرئيسية">
-                <div class="logo-diamond">
-                    <span>WR</span>
-                </div>
+                <div class="logo-diamond"><span>WR</span></div>
                 <span class="text-xl font-black tracking-tighter uppercase" style="font-family:'Orbitron',sans-serif;">
                     WHITE <span class="text-blue-400 italic font-light">ROOM</span>
                 </span>
             </a>
-            <nav class="hidden md:flex gap-6 text-xs font-bold uppercase tracking-wider" style="font-family:'Orbitron',sans-serif;" aria-label="القائمة الرئيسية">
+            <nav class="hidden md:flex gap-6 text-xs font-bold uppercase tracking-wider" style="font-family:'Orbitron',sans-serif;">
                 <a href="#" id="navHomeLink" class="text-blue-400 hover:text-white transition-colors duration-300">HOME</a>
                 <a href="#" id="navGridLink" class="hover:text-blue-400 transition-colors duration-300">TRAINING</a>
             </nav>
         </div>
     </header>
 
-    <!-- MAIN CONTENT -->
     <main>
-        <!-- HERO SECTION -->
         <section id="heroSection" class="container mx-auto px-6 md:px-12 py-16 md:py-24">
             <div class="mono-label mb-6">// TRAINING_FACILITY: ZONE_B</div>
             <h1 class="heading-huge text-white mb-8">
@@ -361,18 +201,15 @@
                 <span class="text-transparent stroke-text">FACILITY</span>
             </h1>
 
-            <!-- THREAT LEVEL INDICATOR -->
             <div class="threat-container" aria-live="polite">
                 <span>THREAT LEVEL:</span>
                 <span class="threat-value" id="threatLevel">منخفض</span>
-                <div class="threat-bar">
-                    <div class="threat-fill" id="threatFill"></div>
-                </div>
+                <div class="threat-bar"><div class="threat-fill" id="threatFill"></div></div>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-end mt-12">
                 <p class="text-slate-300 text-lg md:text-xl leading-relaxed hero-border justify-text">
-                    هنا تبدأ الرحلة من الصفر نحو القمة. كل قاعدة صارمة، كل اختبار قاسٍ، وكل ساعة تدريب هي خطوة نحو بوابة <b>النخبة</b>. الأرقام لا ترحم، والعقل البارد هو رفيقك الوحيد.
+                    هنا تبدأ الرحلة من الصفر نحو القمة. كل قاعدة صارمة، وكل اختبار قاسٍ، وكل ساعة تدريب هي خطوة نحو بوابة <b>النخبة</b>. الأرقام لا ترحم، والعقل البارد هو رفيقك الوحيد.
                 </p>
                 <div class="flex flex-wrap gap-4">
                     <button class="btn-elite" id="actionExplore">تصفح البروتوكولات</button>
@@ -381,111 +218,101 @@
             </div>
         </section>
 
-        <!-- CARDS GRID SECTION -->
         <section id="nodesGridSection" class="container mx-auto px-6 md:px-12 py-12">
-            <div class="section-divider">
+            <div class="border-b border-white/5 pb-6 mb-12">
                 <div class="mono-label mb-2">// TRAINING PROTOCOLS</div>
                 <h2 class="text-3xl md:text-4xl font-black text-white">
                     قوانين المبتدئين <span class="text-blue-400 font-light italic">جاهزة للتطبيق</span>
                 </h2>
                 <p class="text-slate-400 mt-2 text-sm">اضغط على أي كارت لقراءة البروتوكول كاملاً.</p>
             </div>
+
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                <!-- Cards with data-target attributes -->
-                <div class="glass-node-card" data-target="intro" role="button" tabindex="0" aria-label="ملف التعريف"><div class="text-3xl mb-4">🏛️</div><span class="text-[10px] font-bold block mb-1 text-blue-400" style="font-family:'Orbitron',sans-serif;">INF_00</span><h3 class="text-lg font-bold text-white mb-2">ملف التعريف</h3><p class="text-slate-400 text-xs line-clamp-2">فلسفة القطاع والغرض من وجوده.</p></div>
-                <div class="glass-node-card" data-target="trn01" role="button" tabindex="0" aria-label="بوابة العبور للنخبة"><div class="text-3xl mb-4">🚪</div><span class="text-[10px] font-bold block mb-1 text-blue-400" style="font-family:'Orbitron',sans-serif;">TRN_01</span><h3 class="text-lg font-bold text-white mb-2">بوابة العبور للنخبة</h3><p class="text-slate-400 text-xs line-clamp-2">شرط الصعود النهائي.</p></div>
-                <div class="glass-node-card" data-target="trn02" role="button" tabindex="0" aria-label="الاستحقاق الأسبوعي"><div class="text-3xl mb-4">⚡</div><span class="text-[10px] font-bold block mb-1 text-blue-400" style="font-family:'Orbitron',sans-serif;">TRN_02</span><h3 class="text-lg font-bold text-white mb-2">الاستحقاق الأسبوعي</h3><p class="text-slate-400 text-xs line-clamp-2">الحد الأدنى الإجباري للمباريات.</p></div>
-                <div class="glass-node-card" data-target="trn03" role="button" tabindex="0" aria-label="منحنى Elo"><div class="text-3xl mb-4">📈</div><span class="text-[10px] font-bold block mb-1 text-blue-400" style="font-family:'Orbitron',sans-serif;">TRN_03</span><h3 class="text-lg font-bold text-white mb-2">منحنى Elo</h3><p class="text-slate-400 text-xs line-clamp-2">مراقبة التصنيف والتقدم.</p></div>
-                <div class="glass-node-card" data-target="trn04" role="button" tabindex="0" aria-label="النزاهة المطلقة"><div class="text-3xl mb-4">🔍</div><span class="text-[10px] font-bold block mb-1 text-blue-400" style="font-family:'Orbitron',sans-serif;">TRN_04</span><h3 class="text-lg font-bold text-white mb-2">النزاهة المطلقة</h3><p class="text-slate-400 text-xs line-clamp-2">حظر الغش والمحركات.</p></div>
-                <div class="glass-node-card" data-target="trn05" role="button" tabindex="0" aria-label="الميدان الرسمي"><div class="text-3xl mb-4">🌐</div><span class="text-[10px] font-bold block mb-1 text-blue-400" style="font-family:'Orbitron',sans-serif;">TRN_05</span><h3 class="text-lg font-bold text-white mb-2">الميدان الرسمي</h3><p class="text-slate-400 text-xs line-clamp-2">Chess.com فقط.</p></div>
-                <div class="glass-node-card" data-target="trn06" role="button" tabindex="0" aria-label="الانضباط العقلي"><div class="text-3xl mb-4">🧊</div><span class="text-[10px] font-bold block mb-1 text-blue-400" style="font-family:'Orbitron',sans-serif;">TRN_06</span><h3 class="text-lg font-bold text-white mb-2">الانضباط العقلي</h3><p class="text-slate-400 text-xs line-clamp-2">منع المشاعر والانفعالات.</p></div>
-                <div class="glass-node-card" data-target="trn07" role="button" tabindex="0" aria-label="مواجهة الكبار"><div class="text-3xl mb-4">⚔️</div><span class="text-[10px] font-bold block mb-1 text-blue-400" style="font-family:'Orbitron',sans-serif;">TRN_07</span><h3 class="text-lg font-bold text-white mb-2">مواجهة الكبار</h3><p class="text-slate-400 text-xs line-clamp-2">قوانين تحدي النخبة.</p></div>
-                <div class="glass-node-card" data-target="trn08" role="button" tabindex="0" aria-label="طلب المساعدة"><div class="text-3xl mb-4">🧠</div><span class="text-[10px] font-bold block mb-1 text-blue-400" style="font-family:'Orbitron',sans-serif;">TRN_08</span><h3 class="text-lg font-bold text-white mb-2">طلب المساعدة</h3><p class="text-slate-400 text-xs line-clamp-2">كيف تتبنى نخبة تدريبك.</p></div>
-                <div class="glass-node-card" data-target="trn09" role="button" tabindex="0" aria-label="سرية البيانات"><div class="text-3xl mb-4">🔒</div><span class="text-[10px] font-bold block mb-1 text-blue-400" style="font-family:'Orbitron',sans-serif;">TRN_09</span><h3 class="text-lg font-bold text-white mb-2">سرية البيانات</h3><p class="text-slate-400 text-xs line-clamp-2">تسريب المواد = طرد.</p></div>
-                <div class="glass-node-card" data-target="trn10" role="button" tabindex="0" aria-label="الخلايا التدريبية"><div class="text-3xl mb-4">🤝</div><span class="text-[10px] font-bold block mb-1 text-blue-400" style="font-family:'Orbitron',sans-serif;">TRN_10</span><h3 class="text-lg font-bold text-white mb-2">الخلايا التدريبية</h3><p class="text-slate-400 text-xs line-clamp-2">تشكيل مجموعات مصغرة.</p></div>
-                <div class="glass-node-card" data-target="contact" role="button" tabindex="0" aria-label="تواصل سريع مع النخبة"><div class="text-3xl mb-4">✉️</div><span class="text-[10px] font-bold block mb-1 text-blue-400" style="font-family:'Orbitron',sans-serif;">TRN_11</span><h3 class="text-lg font-bold text-white mb-2">تواصل سريع مع النخبة</h3><p class="text-slate-400 text-xs line-clamp-2">للاستفسار أو طلب المساعدة.</p></div>
+                <div class="glass-node-card" data-target="intro"><div class="text-3xl mb-4">🏛️</div><span class="text-[10px] font-bold block mb-1 text-blue-400" style="font-family:'Orbitron';">INF_00</span><h3 class="text-lg font-bold text-white mb-2">ملف التعريف</h3><p class="text-slate-400 text-xs line-clamp-2">فلسفة القطاع والغرض من وجوده.</p></div>
+                <div class="glass-node-card" data-target="trn01"><div class="text-3xl mb-4">🚪</div><span class="text-[10px] font-bold block mb-1 text-blue-400" style="font-family:'Orbitron';">TRN_01</span><h3 class="text-lg font-bold text-white mb-2">بوابة العبور للنخبة</h3><p class="text-slate-400 text-xs line-clamp-2">شرط الصعود النهائي.</p></div>
+                <div class="glass-node-card" data-target="trn02"><div class="text-3xl mb-4">⚡</div><span class="text-[10px] font-bold block mb-1 text-blue-400" style="font-family:'Orbitron';">TRN_02</span><h3 class="text-lg font-bold text-white mb-2">الاستحقاق الأسبوعي</h3><p class="text-slate-400 text-xs line-clamp-2">الحد الأدنى الإجباري للمباريات.</p></div>
+                <div class="glass-node-card" data-target="trn03"><div class="text-3xl mb-4">📈</div><span class="text-[10px] font-bold block mb-1 text-blue-400" style="font-family:'Orbitron';">TRN_03</span><h3 class="text-lg font-bold text-white mb-2">منحنى Elo</h3><p class="text-slate-400 text-xs line-clamp-2">مراقبة التصنيف والتقدم.</p></div>
+                <div class="glass-node-card" data-target="trn04"><div class="text-3xl mb-4">🔍</div><span class="text-[10px] font-bold block mb-1 text-blue-400" style="font-family:'Orbitron';">TRN_04</span><h3 class="text-lg font-bold text-white mb-2">النزاهة المطلقة</h3><p class="text-slate-400 text-xs line-clamp-2">حظر الغش والمحركات.</p></div>
+                <div class="glass-node-card" data-target="trn05"><div class="text-3xl mb-4">🌐</div><span class="text-[10px] font-bold block mb-1 text-blue-400" style="font-family:'Orbitron';">TRN_05</span><h3 class="text-lg font-bold text-white mb-2">الميدان الرسمي</h3><p class="text-slate-400 text-xs line-clamp-2">Chess.com فقط.</p></div>
+                <div class="glass-node-card" data-target="trn06"><div class="text-3xl mb-4">🧊</div><span class="text-[10px] font-bold block mb-1 text-blue-400" style="font-family:'Orbitron';">TRN_06</span><h3 class="text-lg font-bold text-white mb-2">الانضباط العقلي</h3><p class="text-slate-400 text-xs line-clamp-2">منع المشاعر والانفعالات.</p></div>
+                <div class="glass-node-card" data-target="trn07"><div class="text-3xl mb-4">⚔️</div><span class="text-[10px] font-bold block mb-1 text-blue-400" style="font-family:'Orbitron';">TRN_07</span><h3 class="text-lg font-bold text-white mb-2">مواجهة الكبار</h3><p class="text-slate-400 text-xs line-clamp-2">قوانين تحدي النخبة.</p></div>
+                <div class="glass-node-card" data-target="trn08"><div class="text-3xl mb-4">🧠</div><span class="text-[10px] font-bold block mb-1 text-blue-400" style="font-family:'Orbitron';">TRN_08</span><h3 class="text-lg font-bold text-white mb-2">طلب المساعدة</h3><p class="text-slate-400 text-xs line-clamp-2">كيف تتبنى نخبة تدريبك.</p></div>
+                <div class="glass-node-card" data-target="trn09"><div class="text-3xl mb-4">🔒</div><span class="text-[10px] font-bold block mb-1 text-blue-400" style="font-family:'Orbitron';">TRN_09</span><h3 class="text-lg font-bold text-white mb-2">سرية البيانات</h3><p class="text-slate-400 text-xs line-clamp-2">تسريب المواد = طرد.</p></div>
+                <div class="glass-node-card" data-target="trn10"><div class="text-3xl mb-4">🤝</div><span class="text-[10px] font-bold block mb-1 text-blue-400" style="font-family:'Orbitron';">TRN_10</span><h3 class="text-lg font-bold text-white mb-2">الخلايا التدريبية</h3><p class="text-slate-400 text-xs line-clamp-2">تشكيل مجموعات مصغرة.</p></div>
+                <div class="glass-node-card" data-target="contact"><div class="text-3xl mb-4">✉️</div><span class="text-[10px] font-bold block mb-1 text-blue-400" style="font-family:'Orbitron';">TRN_11</span><h3 class="text-lg font-bold text-white mb-2">تواصل سريع مع النخبة</h3><p class="text-slate-400 text-xs line-clamp-2">للاستفسار أو طلب المساعدة.</p></div>
             </div>
         </section>
 
-        <!-- DYNAMIC CONTENT VIEWPORT -->
         <section id="dynamicViewportContainer" class="container mx-auto px-6 md:px-12 py-12" aria-live="polite"></section>
     </main>
 
-    <!-- FOOTER -->
     <footer class="py-12 border-t border-white/5 bg-black mt-20">
         <div class="container mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="flex items-center gap-3">
-                <div class="w-6 h-6 border border-white/20 rotate-45 flex items-center justify-center">
-                    <span class="rotate-[-45deg] text-[8px] font-bold">WR</span>
-                </div>
-                <div class="text-xs font-black tracking-widest uppercase" style="font-family:'Orbitron',sans-serif;">
-                    THE WHITE ROOM <span class="text-blue-400">TRAINING</span>
-                </div>
+                <div class="w-6 h-6 border border-white/20 rotate-45 flex items-center justify-center"><span class="rotate-[-45deg] text-[8px] font-bold">WR</span></div>
+                <div class="text-xs font-black tracking-widest uppercase" style="font-family:'Orbitron';">THE WHITE ROOM <span class="text-blue-400">TRAINING</span></div>
             </div>
-            <div class="text-[10px] tracking-wider opacity-40" style="font-family:'Orbitron',sans-serif;">
-                © 2026 TRAINING_FACILITY — ALL RULES ARE ABSOLUTE
-            </div>
+            <div class="text-[10px] tracking-wider opacity-40" style="font-family:'Orbitron';">© 2026 TRAINING_FACILITY — ALL RULES ARE ABSOLUTE</div>
         </div>
     </footer>
 
-    <!-- WHISPER -->
     <div class="whisper" id="dynamicWhisper" aria-hidden="true">"لا تولد عبقرياً... بل اصنع من نفسك واحداً."</div>
 
     <script>
         (function() {
-            // ========== DATA STORE ==========
+            // ========== محتوى البروتوكولات ==========
             const whiteRoomData = {
                 intro: {
                     title: "ملف التعريف",
                     body: `<div class="max-w-4xl mx-auto">
                 <span class="mono-label text-blue-400 block mb-2">// INF_00</span>
-                <h3 class="text-3xl font-black text-white mb-6">منشأة الغرفة البيضاء - قطاع المبتدئين</h3>
+                <h3 class="text-3xl font-black text-white mb-6">قطاع المبتدئين - منشأة الغرفة البيضاء</h3>
                 <p class="text-slate-300 leading-relaxed mb-6 justify-text">
-                    <b>الخلفية التاريخية:</b> هذا النظام مستوحى من المنشأة التجريبية الأكثر صرامة في أنمي <b>Classroom of the Elite</b>، حيث يتم عزل الأفراد عن العالم الخارجي لإلغاء المشاعر والمشتتات، والتركيز على هدف واحد: <b>صناعة وتوليد العباقرة والنخبة المطلقة عبر الكفاءة والمنطق البارد.</b><br><br>
-                    <b>ماذا نفعل هنا؟</b> أنت هنا لست لاعباً هاوياً، أنت هنا مشروع عبقري تكتيكي. في هذه المنشأة، نستخدم <b>الشطرنج كأداة لاختبار ورفع أقصى حدود قدراتك العقلية</b> (التخطيط الاستراتيجي، التحكم في الانفعالات، والتحليل الخوارزمي للمواقف).<br><br>
-                    <b>المطلوب منك:</b> نسيان العشوائية. ستخوض مواجهات رسمية، يتم تتبعها وتحليلها رقمياً ومراقبة منحنى مستواك يومياً. إما أن تتطور لتصعد إلى رتبة النخبة وتثبت جدارتك، أو يسحقك النظام وتتم تصفيتك خارج المنشأة. <b>البقاء هنا لمن يملك الأرقام والنتائج فقط.</b>
+                    <b>من نحن؟</b> نظام تدريبي صارم مستوحى من أنمي <b>Classroom of the Elite</b>. مهمتنا بناء العقول الاستراتيجية عبر إلغاء المشتتات والتركيز على المنطق.<br><br>
+                    <b>هدفك هنا:</b> أنت لست لاعباً عادياً، بل مشروع عبقري تكتيكي. نستخدم <b>الشطرنج</b> لاختبار ذكائك الاستراتيجي وانضباطك العقلي.<br><br>
+                    <b>المطلوب منك:</b> الالتزام الكامل. كل مباراة تُحلل، وكل نتيجة تُراقب. <b>إما أن تصعد إلى النخبة أو تغادر المنشأة.</b>
                 </p>
             </div>`
                 },
                 trn01: {
                     title: "بوابة العبور للنخبة",
-                    body: `<div class="max-w-4xl mx-auto"><span class="mono-label text-blue-400 block mb-2">// TRN_01</span><h3 class="text-3xl font-black text-white mb-6">بوابة العبور</h3><p class="text-slate-300 leading-relaxed justify-text">الترقي ليس صدفة: للانتقال إلى الغرفة البيضاء الرئيسية (النخبة)، يتعين عليك احتلال أحد المراكز الثلاثة الأولى في قائمة الشرف لـ <b>4 أسابيع متتالية</b>. التراجع ليوم واحد ينسف التقدم بالكامل.</p></div>`
+                    body: `<div class="max-w-4xl mx-auto"><span class="mono-label text-blue-400 block mb-2">// TRN_01</span><h3 class="text-3xl font-black text-white mb-6">شرط الصعود</h3><p class="text-slate-300 leading-relaxed justify-text">للصعود إلى طبقة النخبة، يجب أن تحتل <b>المركز الأول، الثاني، أو الثالث</b> في قائمة الشرف <b>لمدة 4 أسابيع متتالية</b>. أي تراجع ولو ليوم واحد يعيد العداد إلى الصفر.</p></div>`
                 },
                 trn02: {
-                    title: "بروتوكول الاستحقاق أسبوعياً",
-                    body: `<div class="max-w-4xl mx-auto"><span class="mono-label text-blue-400 block mb-2">// TRN_02</span><h3 class="text-3xl font-black text-white mb-6">الاستحقاق الأسبوعي</h3><p class="text-slate-300 leading-relaxed justify-text">الحق في البقاء مشروط بالعمل. يلتزم كل متدرب بخوض <b>5 مواجهات رسمية</b> كحد أدنى كل أسبوع عبر المنصة المعتمدة. التقاعس عن هذا الرقم يفعل بروتوكول <span class="text-red-500 font-bold">الإقصاء التلقائي</span>.</p></div>`
+                    title: "بروتوكول الاستحقاق الأسبوعي",
+                    body: `<div class="max-w-4xl mx-auto"><span class="mono-label text-blue-400 block mb-2">// TRN_02</span><h3 class="text-3xl font-black text-white mb-6">الحد الأدنى من المباريات</h3><p class="text-slate-300 leading-relaxed justify-text">يجب أن تلعب <b>5 مباريات رسمية على الأقل كل أسبوع</b> على المنصة المعتمدة. أي تقصير يؤدي إلى <span class="text-red-500 font-bold">الإقصاء الفوري</span>.</p></div>`
                 },
                 trn03: {
                     title: "منحنى نمو الـ Elo",
-                    body: `<div class="max-w-4xl mx-auto"><span class="mono-label text-blue-400 block mb-2">// TRN_03</span><h3 class="text-3xl font-black text-white mb-6">منحنى Elo</h3><p class="text-slate-300 leading-relaxed justify-text">الوقوف في مكانك يعني نهايتك الفنية. يراقب النظام منحنى تصنيفك الفني؛ ثبات مستوى تقييمك أو هبوطه المستمر على مدار <b>45 يوماً</b> يعرضك فوراً لإعادة تقييم الأهلية للبقاء في المنشأة. <br><span class="text-red-500 font-bold">تذكّر:</span> ثبات مستواك لا يعني أنك سيء، بل يعني أن الآخرين يتقدمون بسرعة أكبر. لا مكان للمتعثرين.</p></div>`
+                    body: `<div class="max-w-4xl mx-auto"><span class="mono-label text-blue-400 block mb-2">// TRN_03</span><h3 class="text-3xl font-black text-white mb-6">تقدمك تحت المراقبة</h3><p class="text-slate-300 leading-relaxed justify-text">إذا ظل تصنيفك ثابتاً أو انخفض لمدة <b>45 يوماً متواصلة</b>، فسيتم إعادة تقييم أهليتك للبقاء. <br><span class="text-red-500 font-bold">تذكّر:</span> الثبات يعني التراجع، والآخرون يتقدمون بسرعة.</p></div>`
                 },
                 trn04: {
                     title: "الرصد والنزاهة المطلقة",
-                    body: `<div class="max-w-4xl mx-auto"><span class="mono-label text-blue-400 block mb-2">// TRN_04</span><h3 class="text-3xl font-black text-white mb-6">النزاهة المطلقة</h3><p class="text-slate-300 leading-relaxed justify-text">استخدام الخوارزميات أو الأدوات المساعدة أو محركات الشطرنج (Engines) جريمة في حق المنشأة. أنظمة الفحص كفيلة بكشف أدنى تلاعب، والعقوبة هي <span class="text-red-500 font-bold">الشطب والمنع النهائي</span> من السجلات.</p></div>`
+                    body: `<div class="max-w-4xl mx-auto"><span class="mono-label text-blue-400 block mb-2">// TRN_04</span><h3 class="text-3xl font-black text-white mb-6">الغش = نهاية فورية</h3><p class="text-slate-300 leading-relaxed justify-text">استخدام برامج الغش أو محركات الشطرنج (Engines) ممنوع تماماً. أنظمتنا ترصد أي تلاعب، والعقوبة <span class="text-red-500 font-bold">شطب نهائي</span> بلا استئناف.</p></div>`
                 },
                 trn05: {
                     title: "الميدان والموقع الرسمي",
-                    body: `<div class="max-w-4xl mx-auto"><span class="mono-label text-blue-400 block mb-2">// TRN_05</span><h3 class="text-3xl font-black text-white mb-6">الميدان الرسمي</h3><p class="text-slate-300 leading-relaxed justify-text">منصة <b>Chess.com</b> هي الساحة الرقمية الوحيدة المعترف بها. أي مباريات أو اختبارات تُجرى خارج السيرفر أو على منصات أخرى لا وزن لها ولا تُقيد في تقارير الأداء الفني الخاصة بك.</p></div>`
+                    body: `<div class="max-w-4xl mx-auto"><span class="mono-label text-blue-400 block mb-2">// TRN_05</span><h3 class="text-3xl font-black text-white mb-6">المنصة الوحيدة</h3><p class="text-slate-300 leading-relaxed justify-text">كل المباريات والتقييمات تتم حصرياً عبر <b>Chess.com</b>. أي مواجهة خارج هذه المنصة لا تُحتسب رسمياً.</p></div>`
                 },
                 trn06: {
                     title: "الانضباط اللفظي والعقلي",
-                    body: `<div class="max-w-4xl mx-auto"><span class="mono-label text-blue-400 block mb-2">// TRN_06</span><h3 class="text-3xl font-black text-white mb-6">الانضباط العقلي</h3><p class="text-slate-300 leading-relaxed justify-text">بيئة التدريب مصممة لبناء العقل؛ المشاعر مرادف للفشل. أي انفجار عاطفي، احتفال مفرط، أو حزن علني يُسجَّل في ملفك كمؤشر على عدم الانضباط. <b>العقل البارد وحده من ينجو.</b></p></div>`
+                    body: `<div class="max-w-4xl mx-auto"><span class="mono-label text-blue-400 block mb-2">// TRN_06</span><h3 class="text-3xl font-black text-white mb-6">العواطف ممنوعة</h3><p class="text-slate-300 leading-relaxed justify-text">بيئة التدريب للعقل فقط. أي انفعالات أو احتفالات مفرطة أو حزن علني تُسجل في ملفك كمؤشر انضباط سلبي. <b>العقل البارد وحده ينجو.</b></p></div>`
                 },
                 trn07: {
                     title: "حدود مواجهة الكبار",
-                    body: `<div class="max-w-4xl mx-auto"><span class="mono-label text-blue-400 block mb-2">// TRN_07</span><h3 class="text-3xl font-black text-white mb-6">مواجهة الكبار</h3><p class="text-slate-300 leading-relaxed justify-text">يُسمح للمتدرب المتميز بتقديم طلب تحدي للمركز الأخير في النخبة بمعدل <b>مرتين فقط شهرياً</b>. إذا خسرت التحدي، تُحظر من حق طلب المواجهات لمدة أسبوعين؛ احتراماً لوقت رتبة النخبة.</p></div>`
+                    body: `<div class="max-w-4xl mx-auto"><span class="mono-label text-blue-400 block mb-2">// TRN_07</span><h3 class="text-3xl font-black text-white mb-6">تحدي النخبة</h3><p class="text-slate-300 leading-relaxed justify-text">يمكنك طلب تحدي صاحب المركز الأخير في النخبة <b>مرتين شهرياً فقط</b>. إذا خسرت، تُمنع من التحدي لمدة أسبوعين.</p></div>`
                 },
                 trn08: {
                     title: "بروتوكول طلب المساعدة الفنية",
-                    body: `<div class="max-w-4xl mx-auto"><span class="mono-label text-blue-400 block mb-2">// TRN_08</span><h3 class="text-3xl font-black text-white mb-6">طلب المساعدة</h3><p class="text-slate-300 leading-relaxed justify-text">يحق للمتدربين الطامحين في التطور طلب التبني والتدريب من قِبل الثلاثة الأوائل في النخبة. <b>الشرط الصارم:</b> إمداد المشرف بروابط مبارياتك على Chess.com بشكل فوري لتوثيق التحليل الرقمي.</p></div>`
+                    body: `<div class="max-w-4xl mx-auto"><span class="mono-label text-blue-400 block mb-2">// TRN_08</span><h3 class="text-3xl font-black text-white mb-6">اطلب التبني</h3><p class="text-slate-300 leading-relaxed justify-text">يمكنك طلب التبني والتدريب من أحد <b>الثلاثة الأوائل في النخبة</b>. الشرط: تزويده بروابط مبارياتك على Chess.com فوراً لتوثيق التحليل.</p></div>`
                 },
                 trn09: {
                     title: "سرية الأبحاث التكتيكية",
-                    body: `<div class="max-w-4xl mx-auto"><span class="mono-label text-blue-400 block mb-2">// TRN_09</span><h3 class="text-3xl font-black text-white mb-6">سرية البيانات</h3><p class="text-slate-300 leading-relaxed justify-text">الافتتاحيات، دراسات نهاية الدور، وتقارير الأخطاء المصممة هنا هي بيانات مغلقة. تسريب أي لقطة شاشة (Screenshot) خارج نطاق المنشأة يعرض المتدرب لعقوبة <span class="text-red-500 font-bold animate-pulse">الطرد الفوري بتهمة الخيانة</span>.</p></div>`
+                    body: `<div class="max-w-4xl mx-auto"><span class="mono-label text-blue-400 block mb-2">// TRN_09</span><h3 class="text-3xl font-black text-white mb-6">المواد سرية</h3><p class="text-slate-300 leading-relaxed justify-text">جميع الخطط والتحليلات والافتتاحيات داخل المنشأة <b>ملكية فكرية سرية</b>. تسريب أي لقطة شاشة يعرضك لـ <span class="text-red-500 font-bold animate-pulse">الطرد الفوري بتهمة الخيانة</span>.</p></div>`
                 },
                 trn10: {
                     title: "بروتوكول التجميع التكتيكي",
-                    body: `<div class="max-w-4xl mx-auto"><span class="mono-label text-blue-400 block mb-2">// TRN_10</span><h3 class="text-3xl font-black text-white mb-6">التجميع التكتيكي</h3><p class="text-slate-300 leading-relaxed justify-text">يُسمح للمتدربين بتشكيل خلايا تدريبية مصغرة (بحد أقصى 3 أفراد). تُقدّم هذه الخلايا تقارير جماعية أسبوعية. في حالة فشل أحد الأعضاء أو تراجع أدائه، تُخصم نقاط من المجموعة بالكامل. <b>لا مكان للضعف الجماعي.</b></p></div>`
+                    body: `<div class="max-w-4xl mx-auto"><span class="mono-label text-blue-400 block mb-2">// TRN_10</span><h3 class="text-3xl font-black text-white mb-6">خلايا تدريبية</h3><p class="text-slate-300 leading-relaxed justify-text">يمكنك تشكيل مجموعة تدريبية من <b>3 أفراد كحد أقصى</b>. عليكم رفع تقارير جماعية أسبوعية. إذا فشل أحد الأعضاء، تُخصم النقاط من المجموعة كاملة. <b>لا مكان للضعف الجماعي.</b></p></div>`
                 },
                 contact: {
                     title: "تواصل سريع مع النخبة",
@@ -509,22 +336,18 @@
                 }
             };
 
-            // ========== DOM REFS ==========
+            // ========== العناصر ==========
             const dynamicViewportContainer = document.getElementById('dynamicViewportContainer');
             const nodesGridSection = document.getElementById('nodesGridSection');
             const threatLevelEl = document.getElementById('threatLevel');
             const threatFillEl = document.getElementById('threatFill');
             const whisperEl = document.getElementById('dynamicWhisper');
 
-            // ========== RENDER SECTION ==========
+            // ========== عرض المحتوى الديناميكي ==========
             function renderSectionContent(sectionId) {
                 if (!whiteRoomData[sectionId]) return;
+                document.querySelectorAll('.full-section-viewport.active').forEach(s => s.classList.remove('active'));
 
-                // Hide all active sections
-                const activeSections = document.querySelectorAll('.full-section-viewport.active');
-                activeSections.forEach(s => s.classList.remove('active'));
-
-                // Get or create target div
                 let targetDiv = document.getElementById(`viewport-${sectionId}`);
                 if (!targetDiv) {
                     targetDiv = document.createElement('div');
@@ -532,95 +355,44 @@
                     targetDiv.className = 'full-section-viewport';
                     targetDiv.innerHTML = whiteRoomData[sectionId].body;
                     dynamicViewportContainer.appendChild(targetDiv);
-
-                    // Attach form listener if contact section
                     if (sectionId === 'contact') {
                         const form = targetDiv.querySelector('#contactForm');
-                        if (form) {
-                            form.addEventListener('submit', handleContactSubmit);
-                        }
+                        if (form) form.addEventListener('submit', handleContactSubmit);
                     }
                 }
-
-                // Show with animation
                 requestAnimationFrame(() => {
                     targetDiv.classList.add('active');
                     targetDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 });
             }
 
-            // ========== CONTACT FORM HANDLER ==========
+            // ========== إرسال نموذج التواصل ==========
             function handleContactSubmit(event) {
                 event.preventDefault();
                 const nameInput = document.getElementById('contactName');
                 const messageInput = document.getElementById('contactMessage');
                 if (!nameInput || !messageInput) return;
-
                 const name = nameInput.value.trim();
                 const message = messageInput.value.trim();
-
-                if (!name || !message) {
-                    alert('يرجى ملء جميع الحقول.');
-                    return;
-                }
-
+                if (!name || !message) { alert('يرجى ملء جميع الحقول.'); return; }
                 const phoneNumbers = ['201131543403', '201118449087'];
                 const randomNumber = phoneNumbers[Math.floor(Math.random() * phoneNumbers.length)];
                 const text = `مرحباً، أنا ${name}.%0A%0A${message}`;
                 window.open(`https://wa.me/${randomNumber}?text=${text}`, '_blank');
             }
 
-            // ========== SCROLL TO TOP ==========
-            function scrollToTop() {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                const activeSections = document.querySelectorAll('.full-section-viewport.active');
-                activeSections.forEach(s => s.classList.remove('active'));
-            }
-
-            // ========== EVENT DELEGATION FOR CARDS ==========
-            nodesGridSection.addEventListener('click', function(e) {
+            // ========== الأحداث ==========
+            nodesGridSection.addEventListener('click', e => {
                 const card = e.target.closest('.glass-node-card');
-                if (!card) return;
-                const target = card.getAttribute('data-target');
-                if (target) renderSectionContent(target);
+                if (card) renderSectionContent(card.getAttribute('data-target'));
             });
+            document.getElementById('actionExplore').addEventListener('click', () => nodesGridSection.scrollIntoView({ behavior: 'smooth' }));
+            document.getElementById('actionIntro').addEventListener('click', () => renderSectionContent('intro'));
+            document.getElementById('logoHome').addEventListener('click', e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+            document.getElementById('navHomeLink').addEventListener('click', e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+            document.getElementById('navGridLink').addEventListener('click', e => { e.preventDefault(); nodesGridSection.scrollIntoView({ behavior: 'smooth' }); });
 
-            // Keyboard accessibility for cards
-            nodesGridSection.addEventListener('keydown', function(e) {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    const card = e.target.closest('.glass-node-card');
-                    if (!card) return;
-                    e.preventDefault();
-                    const target = card.getAttribute('data-target');
-                    if (target) renderSectionContent(target);
-                }
-            });
-
-            // ========== BUTTON EVENTS ==========
-            document.getElementById('actionExplore').addEventListener('click', function() {
-                nodesGridSection.scrollIntoView({ behavior: 'smooth' });
-            });
-
-            document.getElementById('actionIntro').addEventListener('click', function() {
-                renderSectionContent('intro');
-            });
-
-            document.getElementById('logoHome').addEventListener('click', function(e) {
-                e.preventDefault();
-                scrollToTop();
-            });
-
-            document.getElementById('navHomeLink').addEventListener('click', function(e) {
-                e.preventDefault();
-                scrollToTop();
-            });
-
-            document.getElementById('navGridLink').addEventListener('click', function(e) {
-                e.preventDefault();
-                nodesGridSection.scrollIntoView({ behavior: 'smooth' });
-            });
-
-            // ========== THREAT LEVEL ANIMATION ==========
+            // ========== مستوى التهديد ==========
             const states = [
                 { text: 'منخفض جداً', color: '#00cc66', width: '20%', shadow: '0 0 10px #00cc66' },
                 { text: 'منخفض', color: '#66cc00', width: '35%', shadow: '0 0 12px #66cc00' },
@@ -642,7 +414,7 @@
             updateThreat();
             setInterval(updateThreat, 8000);
 
-            // ========== WHISPERS ==========
+            // ========== همسات ==========
             const whispers = [
                 "القدرة بدون جهد لا تعني شيئاً.",
                 "كل خطوة تخطوها... نرصدها.",
@@ -662,7 +434,6 @@
                     whisperEl.style.opacity = '1';
                 }, 350);
             }, 6000);
-
         })();
     </script>
 </body>
